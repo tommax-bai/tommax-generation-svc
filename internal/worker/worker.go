@@ -210,6 +210,8 @@ func extByMime(mime string) string {
 		return "webp"
 	case "video/mp4":
 		return "mp4"
+	case "video/webm":
+		return "webm"
 	case "audio/mpeg":
 		return "mp3"
 	default:
