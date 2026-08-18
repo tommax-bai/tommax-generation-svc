@@ -1,0 +1,27 @@
+# 模型目录（Phase 1 配置文件管理，docs/05 §1.1；终态由 admin-svc 下发）
+# capability 必须取 docs/02 §3.3 任务类型全集中的值。
+models:
+  - key: mock-image-v1
+    label: Mock 图像模型
+    capability: image.text2img
+    providerModel: mock/image-v1
+    description: 本地占位模型：离线渲染确定性抽象图，用于联调与演示，不消耗任何供应商额度。
+    tags: [new]
+    paramsSchema: |
+      {
+        "type": "object",
+        "properties": {
+          "width":  { "type": "integer", "title": "宽", "default": 1024, "enum": [512, 768, 1024, 2048] },
+          "height": { "type": "integer", "title": "高", "default": 1024, "enum": [512, 768, 1024, 2048] },
+          "n":      { "type": "integer", "title": "张数", "default": 1, "minimum": 1, "maximum": 4 }
+        }
+      }
+
+  - key: mock-image-ref-v1
+    label: Mock 参考生图
+    capability: image.ref2img
+    providerModel: mock/image-ref-v1
+    description: 本地占位模型（参考生图口径），联调画布参考图槽用。
+    tags: []
+    paramsSchema: |
+      { "type": "object", "properties": { "n": { "type": "integer", "default": 1, "minimum": 1, "maximum": 4 } } }

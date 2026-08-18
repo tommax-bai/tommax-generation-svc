@@ -1,0 +1,26 @@
+server:
+  httpAddr: "${TOMMAX_GENERATION_HTTP_ADDR:-:8080}"
+log:
+  level: "${TOMMAX_GENERATION_LOG_LEVEL:-info}"
+  format: "${TOMMAX_GENERATION_LOG_FORMAT:-text}"
+db:
+  dsn: "${TOMMAX_GENERATION_DB_DSN:-postgres://tommax:tommax_dev@127.0.0.1:5432/tommax_generation?sslmode=disable}"
+redis:
+  addr: "${TOMMAX_GENERATION_REDIS_ADDR:-127.0.0.1:6379}"
+adapter:
+  addr: "${TOMMAX_GENERATION_ADAPTER_ADDR:-127.0.0.1:9101}"
+objstore:
+  endpoint: "${TOMMAX_OBJSTORE_ENDPOINT:-127.0.0.1:9000}"
+  accessKey: "${TOMMAX_OBJSTORE_ACCESS_KEY:-tommax}"
+  secretKey: "${TOMMAX_OBJSTORE_SECRET_KEY:-tommax_dev_secret}"
+  bucket: "${TOMMAX_OBJSTORE_BUCKET:-tommax-media}"
+  useSSL: false
+  publicBase: "${TOMMAX_OBJSTORE_PUBLIC_BASE:-http://127.0.0.1:9000/tommax-media}"
+  env: "${TOMMAX_ENV:-dev}"
+catalog:
+  path: "${TOMMAX_GENERATION_CATALOG:-configs/model_catalog.yaml}"
+worker:
+  concurrency: 8
+  maxRetry: 3
+  pollIntervalMs: 1500
+  jobTimeoutSec: 600
