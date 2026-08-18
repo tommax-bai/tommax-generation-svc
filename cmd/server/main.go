@@ -82,6 +82,7 @@ func main() {
 
 	if *mode == "api" || *mode == "all" {
 		r := chi.NewRouter()
+		r.Use(httpx.CORS) // 本地开发跨域；线上由网关处理
 		r.Get("/healthz", func(w http.ResponseWriter, _ *http.Request) { _, _ = w.Write([]byte("ok")) })
 		r.Group(func(protected chi.Router) {
 			protected.Use(func(next http.Handler) http.Handler { return httpx.Chain(next, httpx.DevAuth) })

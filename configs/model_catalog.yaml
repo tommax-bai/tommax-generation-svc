@@ -25,3 +25,21 @@ models:
     tags: []
     paramsSchema: |
       { "type": "object", "properties": { "n": { "type": "integer", "default": 1, "minimum": 1, "maximum": 4 } } }
+
+  - key: mock-video-v1
+    label: Mock 图生视频
+    capability: video.img2video
+    providerModel: mock/video-v1
+    description: 本地占位视频模型：参考图 Ken Burns 运镜合成 MP4（本机 ffmpeg），联调画布图生视频链路。
+    tags: [new]
+    paramsSchema: |
+      { "type": "object", "properties": { "durationSec": { "type": "integer", "title": "时长(秒)", "default": 3, "minimum": 1, "maximum": 6 } } }
+
+  - key: mock-video-text-v1
+    label: Mock 文生视频
+    capability: video.text2video
+    providerModel: mock/video-v1
+    description: 本地占位视频模型：动态抽象画面合成 MP4，联调文生视频链路。
+    tags: []
+    paramsSchema: |
+      { "type": "object", "properties": { "durationSec": { "type": "integer", "title": "时长(秒)", "default": 3, "minimum": 1, "maximum": 6 } } }
